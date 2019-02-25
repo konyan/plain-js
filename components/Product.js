@@ -43,83 +43,91 @@ var template = `
 	</div>		
 `;
 
-import ProductDetail from './ProductDetail.js';
+import ProductDetail from "./ProductDetail.js";
+
+import * as Bridge from "../js/bridge.js";
 
 export default {
-	props: {
-		premium: {
-			type: Boolean,
-			required: true
-		},
-		cart: {}
-	},
+  props: {
+    premium: {
+      type: Boolean,
+      required: true
+    },
+    cart: {}
+  },
 
-	template : template,
-	components: { ProductDetail },
+  template: template,
+  components: { ProductDetail },
 
-	mounted() {
-		eventBus.$on('review-submitted', productReview => {
-			this.reviews.push(productReview);
-		})
-	},
+  mounted() {
+    eventBus.$on("review-submitted", productReview => {
+      this.reviews.push(productReview);
+    });
+  },
 
-	data() {
-		return {
-			brand: 'Vue Mastery',
-			product: 'Liminho',
-			selectedVariant: 0,
-			details: ['height - 180cm', 'White', 'Clothes Black'],
-			variants: [
-				{
-					id: 220,
-					image: './assets/liminho1.jpg',
-					color: 'black',
-					qty: 10
-				},
-				{
-					id: 232,
-					image: './assets/liminho2.jpg',
-					color: 'gray',
-					qty: 3
-				}
-			],
-			reviews: [],
-			tabs: ['Shipping', 'Details'],
-			selectedTab: 'Shipping'
-		}
-	},
+  data() {
+    return {
+      brand: "Vue Mastery",
+      product: "Liminho",
+      selectedVariant: 0,
+      details: ["height - 180cm", "White", "Clothes Black"],
+      variants: [
+        {
+          id: 220,
+          image: "./assets/liminho1.jpg",
+          color: "black",
+          qty: 10
+        },
+        {
+          id: 232,
+          image: "./assets/liminho2.jpg",
+          color: "gray",
+          qty: 3
+        }
+      ],
+      reviews: [],
+      tabs: ["Shipping", "Details"],
+      selectedTab: "Shipping"
+    };
+  },
 
-	computed: {
-		title() {
-			return `${this.brand} ${this.product}`
-		},
-		image() {
-			return this.variants[this.selectedVariant].image
-		},
-		variantId() {
-			return this.variants[this.selectedVariant].id
-		},
-		inStock() {
-			return this.variants[this.selectedVariant].qty
-		},
-		shipping() {
-			return this.premium ? 'Free' : 2.99
-		}
-	},
+  computed: {
+    title() {
+      //   return `${this.brand} ${this.product}`;
+      return Bridge.updateFromAndroid("haha");
+    },
+    image() {
+      return this.variants[this.selectedVariant].image;
+    },
+    variantId() {
+      return this.variants[this.selectedVariant].id;
+    },
+    inStock() {
+      return this.variants[this.selectedVariant].qty;
+    },
+    shipping() {
+      return this.premium ? "Free" : 2.99;
+    },
+    // brand() {
+    //   return Bridge.updateFromAndroid();
+    // }
+  },
 
-	methods: {
-		addToCart() {
-			this.$emit('add-to-cart', this.variantId)
-		},
+  methods: {
+    addToCart() {
+      this.$emit("add-to-cart", this.variantId);
+    },
 
-		removeCart() {
-			this.$emit('remove-cart', this.variantId)
-		},
+    removeCart() {
+      this.$emit("remove-cart", this.variantId);
+    },
 
-		changeProduct(index) {
-			this.selectedVariant = index
-		}
-		
-	}
+    changeProduct(index) {
+      this.selectedVariant = index;
+    }
+  },
 
-}
+  mounted() {
+    // this.brand = localStorage.getItem("brand");
+  }
+};

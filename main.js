@@ -20,6 +20,7 @@ const app = new Vue({
   },
 
   methods: {
+	
     updateCart(id) {
 	  this.cart.push(id);
 	  Bridge.phoneCall('HEE');
