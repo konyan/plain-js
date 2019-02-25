@@ -45,7 +45,7 @@ var template = `
 
 import ProductDetail from "./ProductDetail.js";
 
-import * as Bridge from "../js/bridge.js";
+// import * as Bridge from "../js/bridge.js";
 
 export default {
   props: {
@@ -93,8 +93,8 @@ export default {
 
   computed: {
     title() {
-      //   return `${this.brand} ${this.product}`;
-      return Bridge.updateFromAndroid("haha");
+        return `${this.brand} ${this.product}`;
+    //   return Bridge.updateFromAndroid("haha");
     },
     image() {
       return this.variants[this.selectedVariant].image;

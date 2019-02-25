@@ -5,8 +5,8 @@ export function phoneCall() {
   window.androidObj.textToAndroid("09451560566");
 }
 
-export function updateFromAndroid(message = "default") {
-  console.log("Message",message);
-//   localStorage.setItem("brand",message);
-  return message;
-}
+// export function updateFromAndroid(message = "default") {
+//   console.log("Message",message);
+// //   localStorage.setItem("brand",message);
+//   return message;
+// }
