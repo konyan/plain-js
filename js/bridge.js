@@ -7,6 +7,6 @@ export function phoneCall() {
 
 export function updateFromAndroid(message = "default") {
   console.log("Message",message);
-  localStorage.setItem("brand",message);
+//   localStorage.setItem("brand",message);
   return message;
 }
