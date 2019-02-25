@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Vue Testing</title>
+	<style>
+		.product-image {
+			width: 200px;
+			height: 200px;
+			margin: 10px;
+			border: 1px solid #ddd;
+			float: left
+		}
+
+		.cart {
+			padding: 10px;
+			border: 1px solid #ddd;
+			float: right
+		}
+
+		.product-info {
+			width: 500px;
+			margin: 0 10px 10px 30px;
+			margin-bottom: 20px;
+			float: left
+		}
+		.color-box {
+			width: 40px;
+			height: 40px;
+			margin-top: 10px;
+		}
+		.disabled-btn {
+			background: gray;
+			border: none;
+			color: white;
+		}
+		.t-line-through { text-decoration: line-through; }
+		.active { background-color: blue; }
+		.text-danger {background-color: red;}
+		.review-form {
+			float: left;
+			padding: 20px;
+			border: 1px solid #ddd;
+		}
+		.t-danger {color: red;}
+		.tab {
+			margin-right: 10px;
+			cursor: pointer;
+		}
+		.active-tab { 
+			text-decoration: underline;  
+			color: blue;
+		}
+	</style>
+</head>
+<body>
+
+	<div id="app">
+		<div class="cart">Cart ({{ cart.length }})</div>
+
+		<product :premium="premium" 
+				 :cart="cart.length" 
+				 @add-to-cart="updateCart" 
+				 @remove-cart="deleteCart" />
+	</div>
+
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.6.7/dist/vue.js"></script>
+	<script src="main.js" type="module"></script>
+</body>
+</html>
