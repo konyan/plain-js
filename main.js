@@ -23,7 +23,7 @@ const app = new Vue({
 	
     updateCart(id) {
 	  this.cart.push(id);
-	  Bridge.phoneCall('HEE');
+	  Bridge.phoneCall();
     },
 
     deleteCart(id) {
